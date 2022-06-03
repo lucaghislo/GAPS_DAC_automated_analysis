@@ -37,7 +37,7 @@ class Agilent34461A(object):
             self.active = True
 
 
-    def get_voltage(self,scaled=False,query_range=1,resolution=0.001):
+    def get_voltage(self,scaled=False,query_range=1,resolution=0.000001):
         '''
         Queries the voltage of multimeter.
 
