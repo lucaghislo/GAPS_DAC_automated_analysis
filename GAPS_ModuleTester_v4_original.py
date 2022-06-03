@@ -4134,19 +4134,4 @@ framePBA.grid_remove()
 
 root.protocol("WM_DELETE_WINDOW",closeAll)
 
-#root.mainloop()
-
-setAll()
-thr = 0
-fine_thr = 0
-
-while True:
-    root.update_idletasks()
-    root.update()
-    gui.Threshold_Set.set(thr)
-    setThreshold()
-    
-    if(thr<255):
-        thr = thr + 1
-
-    setAll()
+root.mainloop()
