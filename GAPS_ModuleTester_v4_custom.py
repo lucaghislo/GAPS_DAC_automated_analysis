@@ -20,6 +20,7 @@
 
 import pyvisa
 from agilent_34461A import Agilent34461A
+import time
 
 from tkinter import *
 from tkinter import ttk
@@ -4141,8 +4142,6 @@ root.protocol("WM_DELETE_WINDOW",closeAll)
 
 setAll()
 thr = 0
-fine_thr = 0
-counter = 1
 
 rm = pyvisa.ResourceManager()
 print(rm.list_resources())
@@ -4150,14 +4149,37 @@ print(rm.list_resources())
 pyvisa.ResourceManager().list_resources()
 agilent = Agilent34461A(rm)
 
+# write results to .txt file
+file_out_reset = open('readings_DAC_thr_voltage.txt', 'w')
+file_out_reset.write("DAC\tthr_voltage\n")
+file_out_reset.close()
+file_out = open('readings_DAC_thr_voltage.txt', 'a')
+
+sec = time.time()
+print(sec)
+counter = 0
+
 while True:
+    tic = time.perf_counter()
     root.update_idletasks()
     root.update()
+
     gui.Threshold_Set.set(thr)
 
-    if(thr<255 and counter > 0):
+    voltage = agilent.get_voltage()
+
+    print("THR: " + str(thr) + ", VOLTAGE: " + str(voltage))
+    file_out.write(str(thr) + "\t" + str(voltage) + "\n")
+
+    if(thr<256 and time.time() > sec + 2):
         thr = thr + 1
-
-    print(agilent.get_voltage())
-
+        sec = time.time()
+    
     setAll()
+    toc = time.perf_counter()
+
+    print(f"{toc - tic:0.4f} seconds")
+
+    if(thr > 255):
+        root.destroy()
+        file_out.close()
