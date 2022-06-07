@@ -7,6 +7,9 @@ class Agilent34461A(object):
     This class models the Agilent 34401A Multimeter.
     '''
 
+    # keysight: USB0::10893::5121::MY57212554::0::INSTR
+    # agilent: USB0::2391::7175::MY53202489::0::INSTR
+
     def __init__(self,res_manager,address='USB0::2391::7175::MY53202489::0::INSTR'):
         '''
         Constructor method
