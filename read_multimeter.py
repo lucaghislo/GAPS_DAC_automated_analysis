@@ -6,6 +6,6 @@ print(rm.list_resources())
 
 pyvisa.ResourceManager().list_resources()
 
-agilent = Agilent34401A(rm)
+agilent = Agilent34461A(rm)
 
 print(agilent.get_voltage())
