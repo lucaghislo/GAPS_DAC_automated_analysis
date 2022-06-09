@@ -4165,7 +4165,8 @@ while True:
     root.update()
 
     gui.Threshold_Set.set(thr)
-    gui.FineTHR_Set[31].set('111')
+    gui.FineTHR_Set[31].set('011')
+    gui.CSArefs_Set.set("0011")
 
     voltage = agilent.get_voltage()
 

@@ -15,7 +15,7 @@ write adress = Broadcast
 read adress = 2
 mode = 000
 bias = 0101
-csa refs = 1011
+csa refs = 0011
 shaper = 100
 leakage mask = 00000000000000000000000000000000
 trigger enable mask = 11111111111111111111111111111111
@@ -104,6 +104,6 @@ self-trigger test events = 100
 self-trigger test dac = 1000
 self-trigger test threshold = 200
 self-trigger test shaper = 4
-enable HK test = 1
-HK test events = 100
+enable hk test = 1
+hk test events = 100
 
